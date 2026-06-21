@@ -1,0 +1,48 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ms-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: ruta-tienda
+          uri: lb://MS-TIENDA
+          predicates:
+            - Path=/api/tienda/**
+
+        - id: ruta-miembros
+          uri: lb://MS-MIEMBROS
+          predicates:
+            - Path=/api/miembros/**
+
+        - id: ruta-entrenadores
+          uri: lb://MS-ENTRENADORES
+          predicates:
+            - Path=/api/entrenadores/**
+
+        - id: ruta-clases
+          uri: lb://MS-CLASES
+          predicates:
+            - Path=/api/clases/**
+
+        - id: ruta-notificaciones
+          uri: lb://MS-NOTIFICACIONES
+          predicates:
+            - Path=/api/notificaciones/**
+
+        - id: ruta-gamificacion
+          uri: lb://MS-GAMIFICACION
+          predicates:
+            - Path=/api/gamificacion/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true
