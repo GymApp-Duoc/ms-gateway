@@ -40,6 +40,26 @@ spring:
           predicates:
             - Path=/api/gamificacion/**
 
+        - id: ruta-suscripciones
+          uri: lb://MS-SUSCRIPCIONES
+          predicates:
+            - Path=/api/suscripciones/**
+
+        - id: ruta-nutricion
+          uri: lb://MS-NUTRICION
+          predicates:
+            - Path=/api/nutricion/**
+
+        - id: ruta-evaluacion
+          uri: lb://MS-EVALUACION
+          predicates:
+            - Path=/api/evaluacion/**
+
+        - id: ruta-rutinas
+          uri: lb://MS-RUTINAS
+          predicates:
+            - Path=/api/rutinas/**
+
 eureka:
   client:
     service-url:
